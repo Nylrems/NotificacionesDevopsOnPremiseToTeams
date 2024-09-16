@@ -23,10 +23,12 @@ app.http('buildComplete', {
 
       const buildNumber = reqBody.resource.buildNumber || 'N/A';
       const buildStatus = reqBody.resource.status || 'N/A';
-      const message = reqBody.message.markdown;
-      const requestedFor = (reqBody.resource.requests && reqBody.resource.requests[0].requestedFor && reqBody.resource.requests[0].requestedFor.displayName) || 'N/A';
+      // const message = reqBody.message.markdown;
+      // const requestedFor = (reqBody.resource.requests && reqBody.resource.requests[0].requestedFor && reqBody.resource.requests[0].requestedFor.displayName) || 'N/A';
       const buildUrl = reqBody.resource._links.web.href || '#';
-      const definitionName = reqBody.resource.definition.name;      
+      const definitionName = reqBody.resource.definition.name; 
+      const buildResult = reqBody.resource.result;  
+      const buildRequestedFor = reqBody.resource.requestedFor.displayName;   
 
       const adaptiveCardPayload = {
         "type": "AdaptiveCard",
@@ -60,10 +62,14 @@ app.http('buildComplete', {
                 "title": "Estado:",
                 "value": buildStatus
               },
-              // {
-              //   "title": "Test:",
-              //   "value": message
-              // }
+              {
+                "title": "Resultado:",
+                "value": buildResult
+              },
+              {
+                "title": "Creado por:",
+                "value": buildRequestedFor
+              },
             ]
           }
         ],
