@@ -5,6 +5,7 @@
     variables('adaptiveCard')
 
 ### Post card in a chat or channel > Recipient
+    // Esto funciona para que tome el correo de la persona que hizo el pull request.
     // Se pueden usar cualquiera de estos 2
     - adativeCard (variables('adaptiveCard'))
     - first(filter(outputs('Compose')?['body']?[2]?['facts'], item()?['title'] == 'Email: '))?['value']
