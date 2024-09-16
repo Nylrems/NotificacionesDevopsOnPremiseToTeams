@@ -28,8 +28,9 @@ app.http('pullRequestCreated', {
             const mergeStatus = reqBody.resource.mergeStatus;
             const pullRequestId = reqBody.resource.pullRequestId;
             const description = reqBody.resource.description;
-            const creator = reqBody.resource.reviewers[0].displayName || 'Seguro fuíste tú';
+            const creator = reqBody.resource.createdBy.displayName || 'Seguro fuíste tú';
             const pullRequestUrl = reqBody.resource._links.web.href;
+            const email = reqBody.resource.lastMergeCommit.author.email ? reqBody.resource.lastMergeCommit.author.email: "N/A";
 
 
             const adaptiveCardPayload = {
@@ -80,6 +81,10 @@ app.http('pullRequestCreated', {
                             {
                                 "title": "Creado por: ",
                                 "value": creator
+                            },
+                            {
+                                "title": "Email: ",
+                                "value": email
                             }
                         ]
                     }
