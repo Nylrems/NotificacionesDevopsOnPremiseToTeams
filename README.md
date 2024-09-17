@@ -15,5 +15,21 @@
 
 ![imagen](https://github.com/user-attachments/assets/75b90f28-b122-4334-aea2-a871ec9b443d)
 
+## Consiguración en Windows
 
+1. Instalar Node.js:
+2. Instalar Azure Functions Core Tools
 
+       npm install -g azure-functions-core-tools@3
+   
+4. Crear un Azure Function Local
+
+       mkdir MyFunctionApp
+       cd MyFunctionApp
+       func init
+   
+6. Agregar una nueva función y ejecutar
+
+       func new
+       // Ejecutar
+       func start
